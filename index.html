@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - SYSTECH CTF</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f7ff;
+            --deep-space: #0a0914;
+            --cyber-purple: #4a0082;
+            --electric-blue: #00b4d8;
+            --dark-purple: #150f1d;
+            --accent-purple: #7b2cbf;
+            --text-light: #e0e0e0;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--deep-space), var(--dark-purple));
+            color: var(--text-light);
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(21, 15, 29, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header .contact-info {
+            color: var(--text-gray);
+        }
+
+        .header .social-links a {
+            color: var(--text-gray);
+            font-size: 1.25rem;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .header .social-links a:hover {
+            color: var(--neon-blue);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            background: linear-gradient(45deg, var(--cyber-purple), var(--accent-purple));
+            padding: 8rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-cta {
+            background: var(--neon-blue);
+            color: var(--deep-space);
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+            margin-top: 1.5rem;
+        }
+
+        .btn-cta:hover {
+            background: var(--electric-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 247, 255, 0.5);
+            color: var(--deep-space);
+        }
+
+        .features-section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .features-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-align: center;
+            color: var(--neon-blue);
+        }
+
+        .feature-card {
+            background: rgba(21, 15, 29, 0.7);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            color: var(--electric-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: rgba(21, 15, 29, 0.95);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 247, 255, 0.1);
+        }
+
+        .footer p {
+            color: var(--text-gray);
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .footer i.fa-heart {
+            color: var(--neon-blue);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+
+            .btn-cta {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 6rem 1rem 4rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+
+            .features-section h2 {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                margin-bottom: 2rem;
+            }
+
+            .header .contact-info span {
+                display: none;
+            }
+
+            .header .social-links a {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .btn-cta {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .feature-card p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="contact-info">
+                    <span><i class="fas fa-envelope me-2"></i>support@systechcontest.com</span>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Welcome to SYSTECH CTF</h1>
+                <p>Prepare for challenging cybersecurity contests that will test your skills and knowledge!</p>
+                <a href="contest.html" class="btn-cta btn-lg" role="button">Explore Contests</a>
+            </div>
+        </section>
+
+        <section class="features-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-4" style="color: var(--neon-blue);">Our Features</h2>
+                <div class="row g-4">
+                    <!-- Feature 1 -->
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="fas fa-lock fa-3x mb-3" style="color: var(--electric-blue);"></i>
+                            <h3 style="color: var(--electric-blue);">Advanced Security</h3>
+                            <p>We offer cutting-edge security protocols to protect your data and assets, ensuring a safe environment.</p>
+                        </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="fas fa-laptop-code fa-3x mb-3" style="color: var(--electric-blue);"></i>
+                            <h3 style="color: var(--electric-blue);">Expert Support</h3>
+                            <p>Our team of experts provides 24/7 support to help you with any cybersecurity challenges you face.</p>
+                        </div>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="fas fa-cogs fa-3x mb-3" style="color: var(--electric-blue);"></i>
+                            <h3 style="color: var(--electric-blue);">Custom Solutions</h3>
+                            <p>We offer tailored solutions designed to meet your unique cybersecurity needs and challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 SYSTECH CTF. All rights reserved.</p>
+        <p>Made with <i class="fa fa-heart"></i> by SYSTECH.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
